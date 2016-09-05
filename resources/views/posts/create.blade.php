@@ -15,7 +15,7 @@
 			<h1>Create New Post</h1>
 			<hr>
 		
-			{!! Form::open(['route' => 'posts.store','data-parsley-validate'=>'']) !!}
+			{{-- {!! Form::open(['route' => 'posts.store','data-parsley-validate'=>'']) !!}
 				{{ Form::label('title','Title:')}}
     			{{ Form::text('title', null, array('class'=>'form-control','required'=>'','maxlength'=>"255"))}}
 
@@ -25,8 +25,22 @@
 
 				{{ Form::submit('Create Post', array('class'=>'btn btn-success btn-lg btn-block', 'style'=>'margin-top:20px'))}}
 
-			{!! Form::close() !!}
-		
+			{!! Form::close() !!} --}}
+	
+			<form method="POST" action="{{ route('posts.store')}}" data-parsley-validate>
+				<div class="form-group">
+					
+					<label name="title">Title:</label>
+					<input id="title" name="title" class="form-control" required maxlength="255">
+
+					<label name="body">Post Body:</label>
+					<textarea name="body" id="body" rows="10" class="form-control" required></textarea>
+					
+					<input type="submit" value="Create Post" class="btn btn-success btn-lg btn-block" style="margin-top: 20px">
+					<input type="hidden" name="_token" value="{{ Session::token() }}">
+
+				</div>
+			</form>
 		</div>
 	</div>
 
