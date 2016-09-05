@@ -19,7 +19,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::all();
+        $posts = Post::orderBy('id','desc')->paginate(5);
         return view('posts.index')->withPosts($posts);
     }
 
@@ -44,12 +44,15 @@ class PostController extends Controller
         //validate data
         $this->validate($request, array(
                 'title'=>'required|max:255',
+                'slug'=>'required|alpha_dash|min:5|max:255|unique:posts,slug',
                 'body'=>'required'
             ));
         //store the database
         $post = new Post;
         $post->title = $request->title;
+        $post->slug = $request->slug;
         $post->body = $request->body;
+        
 
         $post->save();
 
@@ -94,16 +97,31 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //Validate data
+        $post = Post::find($id);
+
+        if($request->input('slug') == $post->slug) {
+             //Validate data
          $this->validate($request, array(
                 'title'=>'required|max:255',
                 'body'=>'required'
             ));
+        }else{
+             //Validate data
+         $this->validate($request, array(
+                'title'=>'required|max:255',
+                'slug'=>'required|alpha_dash|min:5|max:255|unique:posts,slug',
+                'body'=>'required'
+            ));
+        }
+
+       
         //save the data to database
-        $post = Post::find($id);
+        // $post = Post::find($id);
 
         $post->title = $request->input('title');
+        $post->body = $request->input('slug');
         $post->body = $request->input('body');
+        
 
         $post->save();
         //set flash data with success message

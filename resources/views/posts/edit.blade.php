@@ -15,6 +15,11 @@
 				{{-- <label name="title">Title:</label> --}}
 				{{-- <input id="title" name="title" class="form-control">  --}}
 			</div>
+
+			<div class="form-group">
+				{{ Form::label('slug','Slug')}}
+				{{ Form::text('slug', null, ['class'=>'form-control'])}}
+			</div>
 			
 			<div class="form-group">
 				{{ Form::label('body','Body')}}

@@ -44,6 +44,11 @@
 
 					</tbody>
 				</table>
+				<div class="text-center">
+					{!! $posts->links(); !!}
+					{{-- {!! $posts->count() . " result"; !!} --}}
+				</div>
+
 			</div>
 	</div>
 

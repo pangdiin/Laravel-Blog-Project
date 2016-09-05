@@ -16,8 +16,12 @@
 			<hr>
 		
 			{{-- {!! Form::open(['route' => 'posts.store','data-parsley-validate'=>'']) !!}
+				
 				{{ Form::label('title','Title:')}}
     			{{ Form::text('title', null, array('class'=>'form-control','required'=>'','maxlength'=>"255"))}}
+
+				{{ Form::label('slug','Slug:')}}
+    			{{ Form::text('slug', null, array('class'=>'form-control','required'=>'','maxlength'=>'255','minlength'=>'5'))}}
 
 				{{ Form::label('body', "Post Body:")}}
 				{{ Form::textarea('body', null, array('class'=>'form-control','required'=>''))}}
@@ -32,6 +36,9 @@
 					
 					<label name="title">Title:</label>
 					<input id="title" name="title" class="form-control" required maxlength="255">
+	
+					<label name="slug">Slug:</label>
+					<input id="slug" name="slug" class="form-control" required maxlength="255" minlength="5">
 
 					<label name="body">Post Body:</label>
 					<textarea name="body" id="body" rows="10" class="form-control" required></textarea>

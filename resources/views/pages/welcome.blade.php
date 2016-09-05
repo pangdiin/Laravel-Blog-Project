@@ -16,29 +16,17 @@
     <div class="row">
       <div class="col-md-8">
           
+          @foreach($posts as $post)
+
           <div class="post">
-            <h3>Post Title</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam nisi dolorem quibusdam, illo ab deserunt. Cupiditate labore ab aliquam, maiores hic nulla explicabo, ratione, corporis error suscipit et commodi velit.</p>
-            <a href="#" class="btn btn-primary">Read more</a>
+            <h3>{{ $post->title }}</h3>
+            <p>{{ substr($post->body, 0, 300) }} {{ strlen($post->body) > 50 ? "...": ""}}</p>
+            <a href="{{ url('blog/'.$post->slug) }}" class="btn btn-primary">Read more</a>
           </div>
-            <hr>
-          <div class="post">
-            <h3>Post Title</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam nisi dolorem quibusdam, illo ab deserunt. Cupiditate labore ab aliquam, maiores hic nulla explicabo, ratione, corporis error suscipit et commodi velit.</p>
-            <a href="#" class="btn btn-primary">Read more</a>
-          </div>
-            <hr>
-          <div class="post">
-            <h3>Post Title</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam nisi dolorem quibusdam, illo ab deserunt. Cupiditate labore ab aliquam, maiores hic nulla explicabo, ratione, corporis error suscipit et commodi velit.</p>
-            <a href="#" class="btn btn-primary">Read more</a>
-          </div>
-            <hr>
-          <div class="post">
-            <h3>Post Title</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam nisi dolorem quibusdam, illo ab deserunt. Cupiditate labore ab aliquam, maiores hic nulla explicabo, ratione, corporis error suscipit et commodi velit.</p>
-            <a href="#" class="btn btn-primary">Read more</a>
-          </div>
+
+          <hr>
+
+          @endforeach
 
       </div>
       <div class="col-md-3 col-md-offset-1">
@@ -46,4 +34,21 @@
       </div>
     </div>
 @endsection
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
