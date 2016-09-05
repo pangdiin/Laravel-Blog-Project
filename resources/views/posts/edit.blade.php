@@ -6,7 +6,7 @@
 
 	<div class="row">
 		{{-- <form method="POST" action="{{ route('posts.update',$post->id) }}"> --}}
-		{!! Form::model($post, ['route'=>['posts.update', $post->id]]) !!}
+		{!! Form::model($post, ['route'=>['posts.update', $post->id],"method"=>'PUT']) !!}
 		<div class="col-md-8">	
 
 			<div class="form-group">
@@ -47,7 +47,9 @@
 					<div class="col-sm-6">
 						
 						{{-- {!! Html::linkRoute('posts.destroy','Delete', array($post->id),array('class'=>'btn btn-danger btn-block')) !!} --}}
-						<a href="{{ route('posts.update',$post->id) }}" class="btn btn-success btn-block">Save Changes</a>
+				
+						{{ Form::submit('Save Changes',['class'=> 'btn btn-success btn-block'])}}
+						{{-- <a href="{{ route('posts.update',$post->id) }}" class="btn btn-success btn-block" type="submit">Save Changes</a> --}}
 
 					</div>
 				</div>
