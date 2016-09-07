@@ -5,9 +5,10 @@
 @section('content')
     <div class="row">
       <div class="col-md-6 col-md-offset-3">
-        <h1>Contact Me</h1>
+      <h1>Contact Me</h1>
        <hr>
-       <form action="">
+       <form action="{{ url('contact') }}" method="POST">
+       {{ csrf_field() }}
          <div class="form-group">
            <label for="email">Email:</label>
            <input id="email" class="form-control" name="email">

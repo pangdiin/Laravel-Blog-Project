@@ -153,6 +153,7 @@ class PostController extends Controller
         $post->save();
 
         if(isset($request->tags)){
+            //sync tags in two tables
             $post->tags()->sync($request->tags);    
         } else {
             $post->tags()->sync(array());
@@ -174,7 +175,7 @@ class PostController extends Controller
     public function destroy($id)
     {
         $post = Post::find($id);
-
+        $post->tags()->detach();
         $post->delete();
 
         Session::flash('success','The post was successfully deleted.');
