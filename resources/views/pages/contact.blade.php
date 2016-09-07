@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="row">
-      <div class="col-md-12">
+      <div class="col-md-6 col-md-offset-3">
         <h1>Contact Me</h1>
        <hr>
        <form action="">
@@ -20,11 +20,10 @@
 
          <div class="form-group">
            <label for="message">Message:</label>
-           <textarea id="message" class="form-control" name="message">Type your message here</textarea>
+           <textarea id="message" class="form-control" name="message">...</textarea>
          </div>
 
         <input type="submit" value="Send Message" class="btn btn-success">
-
        </form>
       </div>
     </div>
