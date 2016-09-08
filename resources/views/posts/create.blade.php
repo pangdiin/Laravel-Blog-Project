@@ -6,6 +6,15 @@
 
 	{!! Html::style('css/parsley.css')!!}
 	{!! Html::style('css/select2.min.css')!!}
+
+	<script src='//cdn.tinymce.com/4/tinymce.min.js'></script>
+  <script>
+  tinymce.init({
+    selector: 'textarea',
+    plugins:'link',
+    menubar:false
+  });
+  </script>
 	
 @endsection
 
@@ -16,7 +25,7 @@
 			<h2>Create New Post</h2>
 			<hr>
 		
-			{!! Form::open(['route' => 'posts.store','data-parsley-validate'=>'']) !!}
+			{!! Form::open(array('route' => 'posts.store','data-parsley-validate'=>'','files'=> true)) !!}
 
 				<div class="form-group">
 					{{ Form::label('title','Title:')}}
@@ -47,15 +56,21 @@
 				</div>
 				
 				<div class="form-group">
+					{{ Form::label('featured_image','Upload Featured Image:') }}
+					{{ Form::file('featured_image')}}	
+				</div>
+				
+				
+				<div class="form-group">
 					{{ Form::label('body', "Post Body:")}}
-					{{ Form::textarea('body', null, array('class'=>'form-control','required'=>'','rows'=>'5'))}}
+					{{ Form::textarea('body', null, array('class'=>'form-control'))}}
 				</div>
 				
 				{{ Form::submit('Create Post', array('class'=>'btn btn-success btn-lg btn-block', 'style'=>'margin-top:20px'))}}
 
 			{!! Form::close() !!}
 	
-			{{-- <form method="POST" action="{{ route('posts.store')}}" data-parsley-validate>
+			{{-- <form method="POST" action="{{ route('posts.store')}}" data-parsley-validate enctype="multipart/form-data">
 
 				{{ csrf_field() }}
 
